@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+profile="${1:-quick}"
+
+case "$profile" in
+  quick)
+    echo "No quick verification configured for this repo." >&2
+    exit 1
+    ;;
+  smoke)
+    echo "No smoke verification configured for this repo." >&2
+    exit 1
+    ;;
+  full)
+    echo "No full verification configured for this repo." >&2
+    exit 1
+    ;;
+  *)
+    echo "Unknown verification profile: $profile" >&2
+    echo "Usage: scripts/verify [quick|smoke|full]" >&2
+    exit 2
+    ;;
+esac

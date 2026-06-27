@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "$0")/.."
+
+profile="${1:-quick}"
+
+require_file() {
+  if [[ ! -f "$1" ]]; then
+    echo "missing required file: $1" >&2
+    exit 1
+  fi
+}
+
+require_text() {
+  local file="$1"
+  local text="$2"
+  if ! grep -Fq "$text" "$file"; then
+    echo "missing expected text in $file: $text" >&2
+    exit 1
+  fi
+}
+
+quick() {
+  require_file "PROJECT_CONTEXT.md"
+  require_file "specs/tools/example-tool.md"
+  require_text "specs/tools/example-tool.md" "status: approved"
+  require_text "specs/tools/example-tool.md" "validated_by:"
+  require_text "PROJECT_CONTEXT.md" "scripts/verify quick"
+}
+
+case "$profile" in
+  quick)
+    quick
+    ;;
+  smoke)
+    quick
+    require_file "README.md"
+    ;;
+  full)
+    quick
+    require_file "AGENTS.md"
+    require_file "process.md"
+    require_file "docs/architecture.md"
+    require_file "docs/change-log.md"
+    ;;
+  *)
+    echo "Unknown verification profile: $profile" >&2
+    echo "Usage: scripts/verify [quick|smoke|full]" >&2
+    exit 2
+    ;;
+esac
+
+echo "verification passed: $profile"

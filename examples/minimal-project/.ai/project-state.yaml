@@ -1,0 +1,15 @@
+current_process:
+  name: minimal-example
+  current_move: close
+  status: complete
+
+pending_approvals: []
+
+approval_artifacts:
+  contract: specs/tools/example-tool.md
+
+verification:
+  default_profile: quick
+  command: scripts/verify
+
+last_updated: 2026-06-27
