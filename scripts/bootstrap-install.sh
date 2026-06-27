@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-archive_url="${STC_AI_DEV_PLAYBOOK_ARCHIVE_URL:-__AI_DEV_PLAYBOOK_ARCHIVE_URL__}"
-bootstrap_url="${STC_AI_DEV_PLAYBOOK_BOOTSTRAP_URL:-__AI_DEV_PLAYBOOK_BOOTSTRAP_URL__}"
+archive_url="${STC_AI_DEV_PLAYBOOK_ARCHIVE_URL:-https://github.com/sentosatech/ai-dev-playbook/archive/refs/heads/main.tar.gz}"
+bootstrap_url="${STC_AI_DEV_PLAYBOOK_BOOTSTRAP_URL:-https://raw.githubusercontent.com/sentosatech/ai-dev-playbook/main/scripts/bootstrap-install.sh}"
 
 usage() {
   cat <<'USAGE'
@@ -10,7 +10,7 @@ Usage: bootstrap-install.sh [--agents codex|claude|both] [--refresh] [--yes]
 
 Downloads AI Dev Playbook to a temporary directory and runs scripts/install-skills.sh.
 
-Set these environment variables until the public URLs are baked into the script:
+Override these environment variables when testing a different source:
   STC_AI_DEV_PLAYBOOK_ARCHIVE_URL
   STC_AI_DEV_PLAYBOOK_BOOTSTRAP_URL
 USAGE
@@ -22,12 +22,6 @@ case "${1:-}" in
     exit 0
     ;;
 esac
-
-if [[ "$archive_url" == "__AI_DEV_PLAYBOOK_ARCHIVE_URL__" ]]; then
-  echo "Missing STC_AI_DEV_PLAYBOOK_ARCHIVE_URL." >&2
-  echo "Set it to a .tar.gz archive URL for ai-dev-playbook." >&2
-  exit 2
-fi
 
 tmp_dir="$(mktemp -d "${TMPDIR:-/tmp}/ai-dev-playbook.XXXXXX")"
 cleanup() {
