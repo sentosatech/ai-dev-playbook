@@ -86,7 +86,7 @@ prompt_agents() {
   printf "Choice [default: %s]: " "$default" >&2
 
   local choice
-  read -r choice
+  read -r choice || true
   case "${choice:-$default}" in
     1|codex|Codex|CODEX) agents="codex" ;;
     2|claude|Claude|CLAUDE) agents="claude" ;;

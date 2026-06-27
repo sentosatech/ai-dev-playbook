@@ -8,6 +8,14 @@ Install the STC skills for Codex and/or Claude:
 curl -fsSL https://raw.githubusercontent.com/sentosatech/ai-dev-playbook/main/scripts/bootstrap-install.sh | bash
 ```
 
+Or inspect first:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/sentosatech/ai-dev-playbook/main/scripts/bootstrap-install.sh -o bootstrap-install.sh
+less bootstrap-install.sh
+bash bootstrap-install.sh
+```
+
 Or, from a local copy of this repo:
 
 ```bash
