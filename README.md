@@ -2,11 +2,14 @@
 
 ## Quick Start
 
-Install the STC skills for Codex and/or Claude:
+Install or refresh the STC skills for Codex and/or Claude:
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/sentosatech/ai-dev-playbook/main/scripts/bootstrap-install.sh | bash
 ```
+
+This overwrites existing STC-managed skills, adds new STC skills, and refuses
+same-name non-STC skill folders.
 
 Or inspect first:
 
@@ -39,7 +42,7 @@ Start a new Codex or Claude session so the installed skills are visible.
 In the repo you want to set up, run:
 
 ```text
-Use $stc-setup-repo to set up this repo.
+Use $stc-init-repo to initialize this repo.
 ```
 
 After pulling updates to this repo, refresh installed skills with:

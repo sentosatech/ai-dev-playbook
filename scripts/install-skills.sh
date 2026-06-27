@@ -159,7 +159,7 @@ bundle_generated_assets() {
   local dest="$2"
 
   case "$skill_name" in
-    stc-setup-repo)
+    stc-init-repo)
       rm -rf "$dest/assets/templates"
       mkdir -p "$dest/assets/templates"
       copy_dir_contents "$templates_dir" "$dest/assets/templates"
@@ -172,7 +172,7 @@ refresh_references() {
   local dest="$2"
 
   case "$skill_name" in
-    stc-setup-repo)
+    stc-init-repo)
       mkdir -p "$dest/references"
       cp "$repo_root/playbooks/repo-setup.md" "$dest/references/repo-setup.md"
       cp "$repo_root/playbooks/repo-structure.md" "$dest/references/repo-structure.md"

@@ -6,9 +6,11 @@ bootstrap_url="${STC_AI_DEV_PLAYBOOK_BOOTSTRAP_URL:-https://raw.githubuserconten
 
 usage() {
   cat <<'USAGE'
-Usage: bootstrap-install.sh [--agents codex|claude|both] [--refresh] [--yes]
+Usage: bootstrap-install.sh [--agents codex|claude|both]
 
 Downloads AI Dev Playbook to a temporary directory and runs scripts/install-skills.sh.
+By default, this installs new STC skills and refreshes existing STC-managed
+skills without overwrite prompts.
 
 Override these environment variables when testing a different source:
   STC_AI_DEV_PLAYBOOK_ARCHIVE_URL
@@ -46,4 +48,4 @@ env \
   STC_SOURCE_PATH="" \
   STC_SOURCE_URL="$archive_url" \
   STC_BOOTSTRAP_URL="$bootstrap_url" \
-  "$repo_dir/scripts/install-skills.sh" "$@"
+  "$repo_dir/scripts/install-skills.sh" --refresh --yes "$@"

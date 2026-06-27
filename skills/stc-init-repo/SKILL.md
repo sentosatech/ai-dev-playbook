@@ -1,11 +1,11 @@
 ---
-name: stc-setup-repo
-description: Apply the STC AI Dev Playbook to a new or existing repo by adding missing agent guidance, project context, process docs, project state, and verification scaffolding without overwriting local truth. Use when bootstrapping or adopting AI-assisted development structure in a repository.
+name: stc-init-repo
+description: Initialize a repo with STC AI development scaffolding: agent guidance, project context, process docs, project state, and optional verification placeholders. Use when adding the playbook structure only; do not interpret product ideas, initial-thinking docs, architecture, specs, or roadmap content.
 ---
 
-# STC Setup Repo
+# STC Init Repo
 
-Apply the STC AI Dev Playbook to the current target repository.
+Add the STC AI Dev Playbook scaffolding to the current target repository.
 
 ## Inputs
 
@@ -28,10 +28,11 @@ Apply the STC AI Dev Playbook to the current target repository.
    - agent instructions
    - project context
    - process or workflow docs
-   - architecture docs and ADRs
-   - specs or contracts
    - project state
    - verification commands
+   Note project thinking files such as `docs/initial-thinking.md` only as
+   existing local truth. Do not read them for content, summarize them, or use
+   them to shape scaffolding during init.
 4. Show a short proposed setup plan before editing:
    - files to add
    - existing files to leave unchanged
@@ -70,6 +71,10 @@ scripts/verify
 ```
 
 Do not create empty folders just to satisfy a template shape.
+
+Do not add architecture, specs, ADRs, code scaffolding, package scaffolding, or
+product-roadmap docs during init unless the user explicitly asks for those
+artifacts in this turn.
 
 ## Verification
 
