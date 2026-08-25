@@ -15,14 +15,16 @@ after repeated manual application proves a real need.
 5. Create `PROJECT_CONTEXT.md` from `templates/PROJECT_CONTEXT.md`.
 6. Create `process.md` from `templates/process.md`.
 7. Create `.ai/project-state.yaml` from `templates/project-state.yaml`.
-8. Add `docs/architecture.md`, `docs/change-log.md`, and `docs/adr/` if the
+8. Add root `scratch/` for local proof-of-life runs and add `scratch/` to
+   `.gitignore`.
+9. Add `docs/architecture.md`, `docs/change-log.md`, and `docs/adr/` if the
    project has durable architecture or history to track.
-9. Add `specs/` only for contracts the project actually needs.
-10. Add `scripts/verify` from `templates/verify.example` only when there is a
+10. Add `specs/` only for contracts the project actually needs.
+11. Add `scripts/verify` from `templates/verify.example` only when there is a
     real verification path to wire, or when the repo wants the standard
     fail-loud placeholder.
-11. Document the verification command/profile in `PROJECT_CONTEXT.md`.
-12. Run the documented verification profile if configured.
+12. Document the verification command/profile in `PROJECT_CONTEXT.md`.
+13. Run the documented verification profile if configured.
 
 Do not create empty folders or placeholder docs that nobody will maintain.
 
@@ -38,9 +40,11 @@ Do not create empty folders or placeholder docs that nobody will maintain.
 7. Add `PROJECT_CONTEXT.md` if the repo lacks current state that agents can
    reliably read.
 8. Add `process.md` if the repo lacks explicit human-plus-agent workflow.
-9. Wire `scripts/verify` to existing tests/checks if practical.
-10. If no automated verification exists, document manual fallback clearly.
-11. Record adoption notes in `PROJECT_CONTEXT.md` or `docs/change-log.md`.
+9. Add or preserve root `scratch/` for local proof-of-life runs and ensure
+   `scratch/` is ignored by git.
+10. Wire `scripts/verify` to existing tests/checks if practical.
+11. If no automated verification exists, document manual fallback clearly.
+12. Record adoption notes in `PROJECT_CONTEXT.md` or `docs/change-log.md`.
 
 Existing repos are allowed to keep their own conventions. The playbook should
 clarify and stabilize the repo, not bulldoze it.
@@ -58,6 +62,7 @@ docs/
 specs/
 .ai/project-state.yaml
 scripts/verify
+scratch/  # local ignored working space
 ```
 
 Agents working inside a project should follow the local project files first.
