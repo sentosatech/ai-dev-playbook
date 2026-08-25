@@ -47,6 +47,8 @@ project/
 
   scripts/
     verify
+
+  scratch/   # ignored local working space
 ```
 
 Do not create empty folders just to satisfy this list. Start with the smallest
@@ -86,6 +88,11 @@ specs/
 
 scripts/verify
   Optional standard verification interface for agents.
+
+scratch/
+  Ignored local working space for proof-of-life runs, temporary outputs,
+  downloads, generated artifacts, and agent experiments. Scratch contents are
+  not project truth.
 ```
 
 ## Agent Instructions
@@ -153,6 +160,24 @@ documented manual review steps.
 The implementation of `scripts/verify` is repo-specific. It may call `pytest`,
 `npm test`, `make`, `just`, `go test`, `cargo test`, schema validators, smoke
 scripts, or manual checks.
+
+## Local Scratch Space
+
+Use a root `scratch/` directory for local throwaway work:
+
+```text
+scratch/
+```
+
+The directory should be ignored by git:
+
+```gitignore
+scratch/
+```
+
+Use scratch for proof-of-life runs, downloaded samples, generated outputs,
+temporary logs, and agent experiments. Promote anything important into durable
+repo artifacts before relying on it.
 
 ## Optional Growth
 

@@ -30,6 +30,7 @@ Add the STC AI Dev Playbook scaffolding to the current target repository.
    - process or workflow docs
    - project state
    - verification commands
+   - ignored local scratch space
    Note project thinking files such as `docs/initial-thinking.md` only as
    existing local truth. Do not read them for content, summarize them, or use
    them to shape scaffolding during init.
@@ -47,7 +48,9 @@ Add the STC AI Dev Playbook scaffolding to the current target repository.
 9. Wire `scripts/verify` to existing checks only when the command is obvious.
    If it is not obvious, install the fail-loud placeholder only when the user
    asks for the standard interface.
-10. Report what was added, skipped, and left for human decision.
+10. Add or preserve root `scratch/` for proof-of-life runs and ensure
+    `scratch/` is ignored by git.
+11. Report what was added, skipped, and left for human decision.
 
 ## Default Artifacts
 
@@ -58,6 +61,7 @@ AGENTS.md
 PROJECT_CONTEXT.md
 process.md
 .ai/project-state.yaml
+scratch/  # local ignored working space
 ```
 
 Add these only when useful:
@@ -71,6 +75,8 @@ scripts/verify
 ```
 
 Do not create empty folders just to satisfy a template shape.
+Exception: root `scratch/` is intentionally local ignored working space for
+proof-of-life runs, generated outputs, and agent experiments.
 
 Do not add architecture, specs, ADRs, code scaffolding, package scaffolding, or
 product-roadmap docs during init unless the user explicitly asks for those
